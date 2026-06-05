@@ -1,0 +1,201 @@
+@import "tailwindcss";
+
+/* ─── Brand color tokens (Tailwind v4 — genera bg-*, text-*, border-*) ─── */
+@theme {
+  --color-ink:       #0B1C2C;
+  --color-ink-deep:  #070F18;
+  --color-ink-mid:   #122540;
+  --color-paper:     #F5F4F0;
+  --color-border-c:  #E2E1DC;
+  --color-steel:     #6B7B8D;
+  --color-copper:    #C4773A;
+}
+
+/* ─── Global reset / base ─── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+
+body {
+  background: #ffffff;
+  color: #0B1C2C;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+}
+
+/* Reset browser default button appearance */
+button {
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  font: inherit;
+  color: inherit;
+  outline: none;
+  -webkit-appearance: none;
+}
+
+/* Remove autofill yellow background */
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus {
+  -webkit-box-shadow: 0 0 0 1000px white inset;
+  transition: background-color 5000s ease-in-out 0s;
+}
+
+/* Remove input default styles */
+input, select, textarea {
+  font: inherit;
+  color: inherit;
+}
+
+::selection { background: #0B1C2C; color: #fff; }
+::-webkit-scrollbar { width: 4px; }
+::-webkit-scrollbar-track { background: #F5F4F0; }
+::-webkit-scrollbar-thumb { background: #0B1C2C; }
+
+/* ─── Layout helpers ─── */
+.wrap {
+  max-width: 1400px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 2rem;
+  padding-right: 2rem;
+}
+@media (min-width: 1024px) {
+  .wrap { padding-left: 5rem; padding-right: 5rem; }
+}
+
+.section {
+  padding-top: 6rem;
+  padding-bottom: 6rem;
+}
+@media (max-width: 1024px) {
+  .section { padding-top: 4.5rem; padding-bottom: 4.5rem; }
+}
+@media (max-width: 768px) {
+  .section { padding-top: 3rem; padding-bottom: 3rem; }
+}
+
+/* ─── Typography scale ─── */
+.t-hero {
+  font-size: clamp(3.2rem, 8vw, 9rem);
+  font-weight: 900;
+  line-height: 0.9;
+  letter-spacing: -0.035em;
+}
+
+.t-display {
+  font-size: clamp(2.2rem, 5vw, 5.5rem);
+  font-weight: 800;
+  line-height: 0.93;
+  letter-spacing: -0.028em;
+}
+
+.t-title {
+  font-size: clamp(1.5rem, 3vw, 2.5rem);
+  font-weight: 700;
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+}
+
+.t-label {
+  font-size: 0.625rem;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  display: block;
+}
+
+/* ─── Buttons ─── */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.875rem 2rem;
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  cursor: pointer;
+  border: 1.5px solid transparent;
+  outline: none;
+  text-decoration: none;
+  transition: background 0.2s, color 0.2s, border-color 0.2s;
+  white-space: nowrap;
+}
+
+.btn-dark {
+  background: #0B1C2C;
+  color: #fff;
+  border-color: #0B1C2C;
+}
+.btn-dark:hover { background: #C4773A; border-color: #C4773A; }
+
+.btn-ghost {
+  background: transparent;
+  color: #fff;
+  border-color: rgba(255, 255, 255, 0.35);
+}
+.btn-ghost:hover { border-color: #fff; background: rgba(255,255,255,0.06); }
+
+.btn-ghost-ink {
+  background: transparent;
+  color: #0B1C2C;
+  border-color: #0B1C2C;
+}
+.btn-ghost-ink:hover { background: #0B1C2C; color: #fff; }
+
+/* ─── Dividers ─── */
+.rule      { height: 1px; background: #E2E1DC; }
+.rule-dark { height: 1px; background: rgba(255,255,255,0.08); }
+
+/* ─── Project card "photo" backgrounds ─── */
+/* Deep atmospheric gradients — simulate processed photography */
+.photo-1 { background: linear-gradient(145deg, #060d14 0%, #0a1a28 40%, #0d2035 100%); }
+.photo-2 { background: linear-gradient(145deg, #0d1109 0%, #121a0c 40%, #18240f 100%); }
+.photo-3 { background: linear-gradient(145deg, #0f0a06 0%, #1a1008 40%, #22160a 100%); }
+.photo-4 { background: linear-gradient(145deg, #080d14 0%, #0c1520 40%, #0f1d2e 100%); }
+.photo-5 { background: linear-gradient(145deg, #060c10 0%, #091420 40%, #0c1c30 100%); }
+.photo-6 { background: linear-gradient(145deg, #08100e 0%, #0d1a17 40%, #122220 100%); }
+.photo-7 { background: linear-gradient(145deg, #100c06 0%, #1a140a 40%, #221c10 100%); }
+.photo-8 { background: linear-gradient(145deg, #0a0d10 0%, #121820 40%, #182434 100%); }
+
+/* Scan-line grain layer inside photo cards */
+.photo-1::before, .photo-2::before, .photo-3::before, .photo-4::before,
+.photo-5::before, .photo-6::before, .photo-7::before, .photo-8::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: repeating-linear-gradient(
+    0deg, transparent, transparent 2px,
+    rgba(255,255,255,0.015) 2px, rgba(255,255,255,0.015) 4px
+  );
+  pointer-events: none;
+}
+
+/* ─── Hover arrow link ─── */
+.link-arrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #C4773A;
+  cursor: pointer;
+  text-decoration: none;
+  position: relative;
+}
+.link-arrow::after {
+  content: '';
+  position: absolute;
+  bottom: -2px; left: 0; right: 0;
+  height: 1px;
+  background: #C4773A;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.28s ease;
+}
+.link-arrow:hover::after { transform: scaleX(1); }

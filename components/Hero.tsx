@@ -2,6 +2,7 @@
 
 import { useEffect, useRef, useState } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
+import basePath from "@/lib/basePath";
 import { ArrowDown, ArrowRight } from "lucide-react";
 
 function useCounter(end: number, dur = 2000, go = false) {
@@ -58,7 +59,7 @@ export default function Hero() {
       {/* Background image */}
       <div style={{
         position: "absolute", inset: 0, zIndex: 0,
-        backgroundImage: "url('/hero.png')",
+        backgroundImage: `url('${basePath}/hero.png')`,
         backgroundSize: "cover",
         backgroundPosition: "center",
       }} />

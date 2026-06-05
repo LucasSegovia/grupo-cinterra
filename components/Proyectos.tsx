@@ -2,6 +2,7 @@
 
 import { useRef, useState } from "react";
 import { motion, useInView, AnimatePresence } from "framer-motion";
+import basePath from "@/lib/basePath";
 import { MapPin, ArrowRight } from "lucide-react";
 
 const cats = ["Todos", "Vial", "Estructuras", "Hidráulica", "Logística", "Urbano", "Energía"];
@@ -29,7 +30,7 @@ function Card({ p, large }: { p: typeof projects[0]; large?: boolean }) {
       {/* Photo bg */}
       <div
         className={`absolute inset-0 transition-transform duration-700 ${hover ? "scale-[1.04]" : "scale-100"}`}
-        style={{ backgroundImage:`url('${p.photo}')`, backgroundSize:"cover", backgroundPosition:"center" }}
+        style={{ backgroundImage:`url('${basePath}${p.photo}')`, backgroundSize:"cover", backgroundPosition:"center" }}
       />
 
       {/* Gradient overlay — stronger at bottom */}

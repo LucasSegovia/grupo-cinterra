@@ -2,6 +2,7 @@
 
 import { useRef, useState } from "react";
 import { motion, useInView } from "framer-motion";
+import basePath from "@/lib/basePath";
 import { Cylinder, Truck, FlaskConical } from "lucide-react";
 
 /*
@@ -90,7 +91,7 @@ export default function PlantasHormigon() {
               style={{ width:"100%", height:"auto", display:"block" }}
               overflow="hidden"
             >
-              <image href="/argentina.svg" x="0" y="0" width="1000" height="1000"
+              <image href={`${basePath}/argentina.svg`} x="0" y="0" width="1000" height="1000"
                 style={{ filter:"grayscale(1) brightness(1.35) sepia(0.15)" }}
               />
               {plants.map((p, i) => (

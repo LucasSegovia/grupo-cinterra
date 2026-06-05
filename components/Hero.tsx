@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import { motion, useScroll, useTransform } from "framer-motion";
+import { motion } from "framer-motion";
 import basePath from "@/lib/basePath";
 import { ArrowDown, ArrowRight } from "lucide-react";
 
@@ -26,9 +26,6 @@ export default function Hero() {
   useEffect(() => { const t = setTimeout(() => setOn(true), 400); return () => clearTimeout(t); }, []);
 
   const sectionRef = useRef<HTMLElement>(null);
-  const { scrollY } = useScroll();
-  const contentOpacity = useTransform(scrollY, [0, 500], [1, 0]);
-  const contentY = useTransform(scrollY, [0, 500], [0, -80]);
 
   const n0 = useCounter(45,  2000, on);
   const n1 = useCounter(500, 2400, on);
@@ -89,10 +86,9 @@ export default function Hero() {
       </div>
 
       {/* Content — fades and lifts on scroll */}
-      <motion.div
+      <div
         className="wrap"
-        // eslint-disable-next-line @typescript-eslint/no-explicit-any
-        style={{ position: "relative", zIndex: 10, paddingTop: "6rem", paddingBottom: "2rem", opacity: contentOpacity as any, y: contentY as any }}
+        style={{ position: "relative", zIndex: 10, paddingTop: "6rem", paddingBottom: "2rem" }}
       >
 
         {/* Eyebrow */}
@@ -186,7 +182,7 @@ export default function Hero() {
           ))}
         </motion.div>
 
-      </motion.div>
+      </div>
 
       {/* Scroll cue */}
       <motion.div
